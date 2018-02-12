@@ -59,7 +59,8 @@ namespace ZooSimulator.Tests
 
             // arrange
             List<Animal> animals = new List<Animal>();
-            for (var i = 0; i < 5; i++){
+            for (var i = 0; i < 5; i++)
+            {
                 animals.Add(new Animal { Type = AnimalType.Monkey });
                 animals.Add(new Animal { Type = AnimalType.Giraffe });
                 animals.Add(new Animal { Type = AnimalType.Elephant });
@@ -74,6 +75,45 @@ namespace ZooSimulator.Tests
             Assert.AreEqual(5, zoo.animals.Count(a => a.Type == AnimalType.Giraffe));
             Assert.AreEqual(5, zoo.animals.Count(a => a.Type == AnimalType.Elephant));
         }
+
+        [TestMethod]
+        public void Zoo_WhenAnimalCreated_ItShouldHave100PercentHealth()
+        {
+
+            // arrange
+            List<Animal> animals = new List<Animal>();
+
+            animals.Add(new Animal { Type = AnimalType.Monkey });
+
+            // act
+            Zoo zoo = new Zoo(animals);
+
+            // assert
+            Assert.AreEqual(100.00, zoo.animals.FirstOrDefault().Health);
+        }
+
+        [TestMethod]
+        public void Zoo_WhenOneOfEachAnimalCreated_TheyShouldAllHave100PercentHealth()
+        {
+
+            // arrange
+            List<Animal> animals = new List<Animal>();
+
+            animals.Add(new Animal { Type = AnimalType.Monkey });
+            animals.Add(new Animal { Type = AnimalType.Giraffe });
+            animals.Add(new Animal { Type = AnimalType.Elephant });
+
+            // act
+            Zoo zoo = new Zoo(animals);
+
+            // assert
+            Assert.AreEqual(100, zoo.animals.FirstOrDefault(m => m.Type == AnimalType.Monkey).Health);
+            Assert.AreEqual(100, zoo.animals.FirstOrDefault(g => g.Type == AnimalType.Giraffe).Health);
+            Assert.AreEqual(100, zoo.animals.FirstOrDefault(e => e.Type == AnimalType.Elephant).Health);
+        }
+
+        // rate is 1hr every 20 seconds
+        // TODO: Add some rate of flow of time tests
     }
 
     public class Zoo
@@ -96,5 +136,19 @@ namespace ZooSimulator.Tests
     public class Animal
     {
         public AnimalType Type { get; internal set; }
+
+        private float health;
+        public float Health
+        {
+            get
+            {
+                return health;
+            }
+        }
+
+        public Animal()
+        {
+            health = 100;
+        }
     }
 }
