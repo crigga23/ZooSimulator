@@ -16,7 +16,7 @@ namespace ZooSimulator.Tests
         
 
         [TestMethod]
-        public void Zoo__TakesOneMonkey_ReturnsOneMonkey()
+        public void Zoo_TakesOneMonkey_ReturnsOneMonkey()
         {
             // arrange 
             List<Animal> animals = new List<Animal>() {
@@ -31,7 +31,7 @@ namespace ZooSimulator.Tests
         }
 
         [TestMethod]
-        public void Zoo__TakesOneGiraffe_ReturnsOneGiraffe()
+        public void Zoo_TakesOneGiraffe_ReturnsOneGiraffe()
         {
             // arrange 
             List<Animal> animals = new List<Animal>() {
@@ -46,7 +46,7 @@ namespace ZooSimulator.Tests
         }
 
         [TestMethod]
-        public void Zoo__TakesOneElephant_ReturnsOneElephant()
+        public void Zoo_TakesOneElephant_ReturnsOneElephant()
         {
             // arrange 
             List<Animal> animals = new List<Animal>() {
@@ -404,6 +404,50 @@ namespace ZooSimulator.Tests
             Assert.ThrowsException<InvalidOperationException>(() => animals[0].Feed(1));
         }
 
+        [TestMethod]
+        public void RandomNumberGenerator_WhenGenerateIsCalled_ReturnsARandomNumberBetween0And20()
+        {
+            // arrange
+            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(0, 20);
+
+            // act
+            var randomNumber = randomNumberGenerator.GetNumber();
+
+            // assert
+            Assert.IsTrue(randomNumber >= 0 && randomNumber <= 20);
+        }
+
+        [TestMethod]
+        public void RandomNumberGenerator_WhenGenerateIsCalled_ReturnsARandomNumberBetween10And25()
+        {
+            // arrange
+            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(10, 25);
+
+            // act
+            var randomNumber = randomNumberGenerator.GetNumber();
+
+            // assert
+            Assert.IsTrue(randomNumber >= 10 && randomNumber <= 25);
+        }
+
+        // This could be a test for the future.. Maybe there should be different implementations of random number generator
+        // i.e. different implementations should have different default range passed in
+        [TestMethod]
+        public void RandomNumberGenerator_WhenGenerateIsCalled_ThrowOutOfRan()
+        {
+            // arrange
+            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(10, 25);
+
+            // act
+            var randomNumber = randomNumberGenerator.GetNumber();
+
+            // assert
+            Assert.IsTrue(randomNumber >= 10 && randomNumber <= 25);
+        }
+
+
+
+
         //[TestMethod]
         //public void Feed_Generates3RandomNumbers_ReturnsRandomNumberBetween10And25()
         //{
@@ -416,7 +460,7 @@ namespace ZooSimulator.Tests
         //    zoo.Feed();
 
         //    // assert
-            
+
         //}
 
         //private static readonly Random random = new Random();
@@ -482,6 +526,23 @@ namespace ZooSimulator.Tests
             const double denominator = 100;
             double boost = (healthBoost / denominator) * Health;
             Health += boost; 
+        }
+    }
+
+    public class RandomNumberGenerator
+    {
+        private int minValue;
+        private int maxValue;
+
+        public RandomNumberGenerator(int minValue, int maxValue)
+        {
+            this.minValue = minValue;
+            this.maxValue = maxValue;
+        }
+
+        internal double GetNumber()
+        {
+            return 0;
         }
     }
 }
