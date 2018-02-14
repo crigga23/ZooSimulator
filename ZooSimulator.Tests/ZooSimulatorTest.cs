@@ -2,25 +2,19 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using System.Diagnostics;
+using ZooSimulator.Models;
 
 namespace ZooSimulator.Tests
 {
     [TestClass]
     public class ZooSimulatorTest
     {
-        // TODO: Probably looking at a IHealth, IWalkable and abstract class for Animal!!!
-        // TODO: Zoo should feed rather than animal
-        // TODO: Timer test to check reduce health is called ??? Not sure about this one now!!!
-        // TODO: #### FEED #### random between 10 and 25
-        
-
         [TestMethod]
         public void Zoo_TakesOneMonkey_ReturnsOneMonkey()
         {
             // arrange 
             List<Animal> animals = new List<Animal>() {
-                new Animal() { Type = AnimalType.Monkey }
+                new Monkey()
             };
 
             Zoo zoo = new Zoo(animals);
@@ -35,7 +29,7 @@ namespace ZooSimulator.Tests
         {
             // arrange 
             List<Animal> animals = new List<Animal>() {
-                new Animal() { Type = AnimalType.Giraffe }
+                new Giraffe()
             };
 
             Zoo zoo = new Zoo(animals);
@@ -50,7 +44,7 @@ namespace ZooSimulator.Tests
         {
             // arrange 
             List<Animal> animals = new List<Animal>() {
-                new Animal() { Type = AnimalType.Elephant }
+                new Elephant()
             };
 
             Zoo zoo = new Zoo(animals);
@@ -68,9 +62,9 @@ namespace ZooSimulator.Tests
             List<Animal> animals = new List<Animal>();
             for (var i = 0; i < 5; i++)
             {
-                animals.Add(new Animal { Type = AnimalType.Monkey });
-                animals.Add(new Animal { Type = AnimalType.Giraffe });
-                animals.Add(new Animal { Type = AnimalType.Elephant });
+                animals.Add(new Monkey());
+                animals.Add(new Giraffe());
+                animals.Add(new Elephant());
             }
 
             // act
@@ -90,7 +84,7 @@ namespace ZooSimulator.Tests
             // arrange
             List<Animal> animals = new List<Animal>();
 
-            animals.Add(new Animal { Type = AnimalType.Monkey });
+            animals.Add(new Monkey());
 
             // act
             Zoo zoo = new Zoo(animals);
@@ -106,9 +100,9 @@ namespace ZooSimulator.Tests
             // arrange
             List<Animal> animals = new List<Animal>();
 
-            animals.Add(new Animal { Type = AnimalType.Monkey });
-            animals.Add(new Animal { Type = AnimalType.Giraffe });
-            animals.Add(new Animal { Type = AnimalType.Elephant });
+            animals.Add(new Monkey());
+            animals.Add(new Giraffe());
+            animals.Add(new Elephant());
 
             // act
             Zoo zoo = new Zoo(animals);
@@ -125,7 +119,7 @@ namespace ZooSimulator.Tests
             // arrange
             List<Animal> animals = new List<Animal>();
 
-            animals.Add(new Animal { Type = AnimalType.Monkey });
+            animals.Add(new Monkey());
 
             // act
             var healthReductionInPercent = 0;
@@ -141,7 +135,7 @@ namespace ZooSimulator.Tests
             // arrange
             List<Animal> animals = new List<Animal>();
 
-            animals.Add(new Animal { Type = AnimalType.Monkey });
+            animals.Add(new Monkey());
 
             // act
             var healthReductionInPercent = 10;
@@ -157,7 +151,7 @@ namespace ZooSimulator.Tests
             // arrange
             List<Animal> animals = new List<Animal>();
 
-            animals.Add(new Animal { Type = AnimalType.Monkey });
+            animals.Add(new Monkey());
 
             // act
             var healthReductionInPercent = 20;
@@ -173,7 +167,7 @@ namespace ZooSimulator.Tests
             // arrange
             List<Animal> animals = new List<Animal>();
 
-            animals.Add(new Animal { Type = AnimalType.Monkey });
+            animals.Add(new Monkey());
 
             // act
             var healthReductionInPercent = 20;
@@ -191,7 +185,7 @@ namespace ZooSimulator.Tests
             // arrange
             List<Animal> animals = new List<Animal>();
 
-            animals.Add(new Animal { Type = AnimalType.Monkey });
+            animals.Add(new Monkey());
 
             // act
             var healthReductionInPercent = -1;
@@ -207,7 +201,7 @@ namespace ZooSimulator.Tests
             // arrange
             List<Animal> animals = new List<Animal>();
 
-            animals.Add(new Animal { Type = AnimalType.Monkey });
+            animals.Add(new Monkey());
 
             // act
             var healthReductionInPercent = 21;
@@ -223,16 +217,15 @@ namespace ZooSimulator.Tests
             // arrange
             List<Animal> animals = new List<Animal>();
 
-            animals.Add(new Animal { Type = AnimalType.Monkey });
-            animals.Add(new Animal { Type = AnimalType.Giraffe });
-            animals.Add(new Animal { Type = AnimalType.Elephant });
+            animals.Add(new Monkey());
+            animals.Add(new Giraffe());
+            animals.Add(new Elephant());
 
             // generate a list of random numbers - list equal to the size of animals
-            var randomNumberGenerator = new Random();
             List<double> randomNumbers = new List<double>(animals.Count);
             for (var animalIndex = 0; animalIndex < animals.Count; animalIndex++)
             {
-                randomNumbers.Add(randomNumberGenerator.NextDouble() * 20);
+                randomNumbers.Add(RandomNumberGenerator.GetNumberInRange(0, 20));
             }
 
             // act
@@ -263,17 +256,16 @@ namespace ZooSimulator.Tests
             List<Animal> animals = new List<Animal>();
             for (var i = 0; i < 5; i++)
             {
-                animals.Add(new Animal { Type = AnimalType.Monkey });
-                animals.Add(new Animal { Type = AnimalType.Giraffe });
-                animals.Add(new Animal { Type = AnimalType.Elephant });
+                animals.Add(new Monkey());
+                animals.Add(new Giraffe());
+                animals.Add(new Elephant());
             }
 
             // generate a list of random numbers - list equal to the size of animals
-            var randomNumberGenerator = new Random();
             List<double> randomNumbers = new List<double>(animals.Count);
             for (var animalIndex = 0; animalIndex < animals.Count; animalIndex++)
             {   
-                randomNumbers.Add(randomNumberGenerator.NextDouble() * 20);
+                randomNumbers.Add(RandomNumberGenerator.GetNumberInRange(0, 20));
             }
 
             // act
@@ -324,94 +316,84 @@ namespace ZooSimulator.Tests
         }
 
         [TestMethod]
-        public void Feed_MonkeyWith90HealthBy10_Returns99HealthForMonkey()
+        public void Feed_MonkeyWith90PercentHealth_HealthIsBoostedForMonkey()
         {
             // arrange
             List<Animal> animals = new List<Animal>();
-            animals.Add(new Animal { Type = AnimalType.Monkey });
-            
-            // act
-            Zoo zoo = new Zoo(animals);
+            animals.Add(new Monkey());
 
-            foreach (var animal in zoo.animals) {
-                animal.Health = 90;
-                animal.Feed(10);
-            }
-
-            // assert
-            Assert.AreEqual(99, zoo.animals[0].Health, 0.0001);
-        }
-
-        [TestMethod]
-        public void Feed_MonkeyWith90HealthBy0_Returns90HealthForMonkey()
-        {
-            // arrange
-            List<Animal> animals = new List<Animal>();
-            animals.Add(new Animal { Type = AnimalType.Monkey });
-            
-            // act
             Zoo zoo = new Zoo(animals);
 
             foreach (var animal in zoo.animals)
             {
                 animal.Health = 90;
-                animal.Feed(0);
             }
 
+            // act
+            zoo.Feed();
+
             // assert
-            Assert.AreEqual(90, zoo.animals[0].Health, 0.0001);
+            var healthIsBoosted = zoo.animals[0].Health >= 90;
+            Assert.IsTrue(healthIsBoosted);
         }
 
         [TestMethod]
-        public void Feed_3DifferentAnimalTypesWith90HealthBy10Percent_Returns99()
+        public void Feed_MonkeyWith100PercentHealth_HealthIsStill100PercentForMonkey()
         {
             // arrange
             List<Animal> animals = new List<Animal>();
-            animals.Add(new Animal { Type = AnimalType.Monkey });
-            animals.Add(new Animal { Type = AnimalType.Giraffe });
-            animals.Add(new Animal { Type = AnimalType.Elephant });
+            animals.Add(new Monkey());
+
+            Zoo zoo = new Zoo(animals);
+
+            foreach (var animal in zoo.animals)
+            {
+                animal.Health = 100;
+            }
 
             // act
+            zoo.Feed();
+
+            // assert
+            var healthIsMax = zoo.animals[0].Health == 100;
+            Assert.IsTrue(healthIsMax);
+        }
+
+        [TestMethod]
+        public void Feed_3DifferentAnimalTypesWith50PercentHealth_HealthBoostedForThem()
+        {
+            // arrange
+            List<Animal> animals = new List<Animal>();
+            animals.Add(new Monkey());
+            animals.Add(new Giraffe());
+            animals.Add(new Elephant());
+
             Zoo zoo = new Zoo(animals);
             foreach (var animal in zoo.animals)
             {
-                animal.Health = 90;
-                animal.Feed(10);
+                animal.Health = 50;
             }
+
+            // act
+            zoo.Feed();
 
             Assert.AreEqual(AnimalType.Monkey, zoo.animals[0].Type);
             Assert.AreEqual(AnimalType.Giraffe, zoo.animals[1].Type);
             Assert.AreEqual(AnimalType.Elephant, zoo.animals[2].Type);
+            
+            Assert.IsTrue(zoo.animals[0].Health >= 50);
+            Assert.IsTrue(zoo.animals[1].Health >= 50);
+            Assert.IsTrue(zoo.animals[2].Health >= 50);
 
-            Assert.AreEqual(99, zoo.animals[0].Health, 0.0001);
-            Assert.AreEqual(99, zoo.animals[1].Health, 0.0001);
-            Assert.AreEqual(99, zoo.animals[2].Health, 0.0001);
 
-
-        }
-
-        [TestMethod]
-        public void Feed_MonkeyWith100HealthBy1_ReturnsInvalidOperationException()
-        {
-            // arrange
-            List<Animal> animals = new List<Animal>();
-            animals.Add(new Animal { Type = AnimalType.Monkey });
-
-            // act
-            Zoo zoo = new Zoo(animals);            
-
-            // assert
-            Assert.ThrowsException<InvalidOperationException>(() => animals[0].Feed(1));
         }
 
         [TestMethod]
         public void RandomNumberGenerator_WhenGenerateIsCalled_ReturnsARandomNumberBetween0And20()
         {
             // arrange
-            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(0, 20);
-
             // act
-            var randomNumber = randomNumberGenerator.GetNumber();
+            var randomNumber = RandomNumberGenerator.GetNumberInRange(0, 20);
 
             // assert
             Assert.IsTrue(randomNumber >= 0 && randomNumber <= 20);
@@ -421,128 +403,105 @@ namespace ZooSimulator.Tests
         public void RandomNumberGenerator_WhenGenerateIsCalled_ReturnsARandomNumberBetween10And25()
         {
             // arrange
-            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(10, 25);
-
             // act
-            var randomNumber = randomNumberGenerator.GetNumber();
+            var randomNumber = RandomNumberGenerator.GetNumberInRange(10, 25);
 
             // assert
             Assert.IsTrue(randomNumber >= 10 && randomNumber <= 25);
         }
 
-        // This could be a test for the future.. Maybe there should be different implementations of random number generator
-        // i.e. different implementations should have different default range passed in
+
         [TestMethod]
-        public void RandomNumberGenerator_WhenGenerateIsCalled_ThrowOutOfRan()
+        public void ReduceHealth_ElephantHealthBelow70Percent_ElephantCannotWalk()
         {
             // arrange
-            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(10, 25);
+            List<Animal> animals = new List<Animal>();
+            animals.Add(new Elephant());
+            Zoo zoo = new Zoo(animals);
+            animals[0].Health = 70;
+            animals[0].CanWalk = true;
 
             // act
-            var randomNumber = randomNumberGenerator.GetNumber();
+
+            animals[0].ReduceHealth(10);
 
             // assert
-            Assert.IsTrue(randomNumber >= 10 && randomNumber <= 25);
+            Assert.IsFalse(animals[0].CanWalk);
+
         }
 
-
-
-
         //[TestMethod]
-        //public void Feed_Generates3RandomNumbers_ReturnsRandomNumberBetween10And25()
+        //public void ReduceHealth_ElephantHealthStillBelow50Percent_ElephantIsDead()
         //{
         //    // arrange
         //    List<Animal> animals = new List<Animal>();
-        //    animals.Add(new Animal { Type = AnimalType.Monkey });
+        //    animals.Add(new Giraffe());
+        //    Zoo zoo = new Zoo(animals);
+        //    animals[0].Health = 50;
 
         //    // act
-        //    Zoo zoo = new Zoo(animals);
-        //    zoo.Feed();
+        //    animals[0].ReduceHealth(10);
 
         //    // assert
+        //    Assert.IsTrue(animals[0].IsDead);
 
         //}
 
-        //private static readonly Random random = new Random();
-
-        //private static double RandomNumberBetween(double minValue, double maxValue)
-        //{
-        //    var next = random.NextDouble();
-
-        //    return minValue + (next * (maxValue - minValue));
-        //}
-
-
-    }
-
-
-
-
-    public class Zoo
-    {
-        public List<Animal> animals { get; set; }
-
-        public Zoo(List<Animal> animals)
+        [TestMethod]
+        public void ReduceHealth_MonkeyHealthBelow30Percent_MonkeyIsDead()
         {
-            this.animals = animals;
-        }
-    }
+            // arrange
+            List<Animal> animals = new List<Animal>();
+            animals.Add(new Monkey());
+            Zoo zoo = new Zoo(animals);
+            animals[0].Health = 30;
 
-    public enum AnimalType
-    {
-        Monkey,
-        Giraffe,
-        Elephant
-    }
+            // act
 
-    public class Animal
-    {
-        public AnimalType Type { get; internal set; }
-        public double Health
-        {
-            get; set; }        
-        public Animal()
-        {
-            Health = 100;
+            animals[0].ReduceHealth(10);
+
+            // assert
+            Assert.IsTrue(animals[0].IsDead);
+
         }
 
-        internal void ReduceHealth(double healthReductionInPercent)
+        [TestMethod]
+        public void ReduceHealth_KillMonkey()
         {
-            if (healthReductionInPercent < 0 || healthReductionInPercent > 20) {
-                throw new ArgumentOutOfRangeException("healthReductionInPercent", "Please enter a value between than 0 and 20");
-            }
+            // arrange
+            List<Animal> animals = new List<Animal>();
+            animals.Add(new Monkey());
+            Zoo zoo = new Zoo(animals);
 
-            const double denominator = 100;
-            double reduction = (healthReductionInPercent / denominator) * Health;
-            Health -= reduction;
+            // act
+            animals[0].ReduceHealth(20);
+            animals[0].ReduceHealth(20);
+            animals[0].ReduceHealth(20);
+            animals[0].ReduceHealth(20);
+            animals[0].ReduceHealth(20);
+            animals[0].ReduceHealth(20);
+
+            // assert
+            Assert.IsTrue(animals[0].IsDead, string.Format("The current health is: {0}", animals[0].Health));
+
         }
 
-        internal void Feed(double healthBoost)
+        [TestMethod]
+        public void ReduceHealth_GiraffeHealthBelow50Percent_GiraffeIsDead()
         {
-            if (Health == 100) {
-                throw new InvalidOperationException("The health of this animal is already at its maximum");
-            }
+            // arrange
+            List<Animal> animals = new List<Animal>();
+            animals.Add(new Giraffe());
+            Zoo zoo = new Zoo(animals);
+            animals[0].Health = 50;
 
-            const double denominator = 100;
-            double boost = (healthBoost / denominator) * Health;
-            Health += boost; 
-        }
-    }
+            // act
 
-    public class RandomNumberGenerator
-    {
-        private int minValue;
-        private int maxValue;
+            animals[0].ReduceHealth(10);
 
-        public RandomNumberGenerator(int minValue, int maxValue)
-        {
-            this.minValue = minValue;
-            this.maxValue = maxValue;
-        }
+            // assert
+            Assert.IsTrue(animals[0].IsDead);
 
-        internal double GetNumber()
-        {
-            return 0;
         }
     }
 }
