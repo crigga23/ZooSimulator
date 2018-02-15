@@ -1,0 +1,11 @@
+C:\src\ZooSimulator\.vs\fanatics\lut\0\b\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.deps.json
+C:\src\ZooSimulator\.vs\fanatics\lut\0\b\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.runtimeconfig.json
+C:\src\ZooSimulator\.vs\fanatics\lut\0\b\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.runtimeconfig.dev.json
+C:\src\ZooSimulator\.vs\fanatics\lut\0\b\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.dll
+C:\src\ZooSimulator\.vs\fanatics\lut\0\b\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.pdb
+C:\src\ZooSimulator\.vs\fanatics\lut\0\i\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.csprojResolveAssemblyReference.cache
+C:\src\ZooSimulator\.vs\fanatics\lut\0\i\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.csproj.CoreCompileInputs.cache
+C:\src\ZooSimulator\.vs\fanatics\lut\0\i\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.AssemblyInfoInputs.cache
+C:\src\ZooSimulator\.vs\fanatics\lut\0\i\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.AssemblyInfo.cs
+C:\src\ZooSimulator\.vs\fanatics\lut\0\i\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.dll
+C:\src\ZooSimulator\.vs\fanatics\lut\0\i\ZooSimulator\Debug\netcoreapp2.0\ZooSimulator.pdb

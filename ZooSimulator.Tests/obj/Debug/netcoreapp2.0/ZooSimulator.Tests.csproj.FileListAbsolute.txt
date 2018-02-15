@@ -1,0 +1,16 @@
+C:\src\ZooSimulator\ZooSimulator.Tests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\src\ZooSimulator\ZooSimulator.Tests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\src\ZooSimulator\ZooSimulator.Tests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\src\ZooSimulator\ZooSimulator.Tests\bin\Debug\netcoreapp2.0\ZooSimulator.Tests.deps.json
+C:\src\ZooSimulator\ZooSimulator.Tests\bin\Debug\netcoreapp2.0\ZooSimulator.Tests.runtimeconfig.json
+C:\src\ZooSimulator\ZooSimulator.Tests\bin\Debug\netcoreapp2.0\ZooSimulator.Tests.runtimeconfig.dev.json
+C:\src\ZooSimulator\ZooSimulator.Tests\bin\Debug\netcoreapp2.0\ZooSimulator.Tests.dll
+C:\src\ZooSimulator\ZooSimulator.Tests\bin\Debug\netcoreapp2.0\ZooSimulator.Tests.pdb
+C:\src\ZooSimulator\ZooSimulator.Tests\bin\Debug\netcoreapp2.0\ZooSimulator.dll
+C:\src\ZooSimulator\ZooSimulator.Tests\bin\Debug\netcoreapp2.0\ZooSimulator.pdb
+C:\src\ZooSimulator\ZooSimulator.Tests\obj\Debug\netcoreapp2.0\ZooSimulator.Tests.csprojResolveAssemblyReference.cache
+C:\src\ZooSimulator\ZooSimulator.Tests\obj\Debug\netcoreapp2.0\ZooSimulator.Tests.csproj.CoreCompileInputs.cache
+C:\src\ZooSimulator\ZooSimulator.Tests\obj\Debug\netcoreapp2.0\ZooSimulator.Tests.AssemblyInfoInputs.cache
+C:\src\ZooSimulator\ZooSimulator.Tests\obj\Debug\netcoreapp2.0\ZooSimulator.Tests.AssemblyInfo.cs
+C:\src\ZooSimulator\ZooSimulator.Tests\obj\Debug\netcoreapp2.0\ZooSimulator.Tests.dll
+C:\src\ZooSimulator\ZooSimulator.Tests\obj\Debug\netcoreapp2.0\ZooSimulator.Tests.pdb

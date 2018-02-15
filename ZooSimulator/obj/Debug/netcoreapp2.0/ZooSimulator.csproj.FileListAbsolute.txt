@@ -1,0 +1,11 @@
+C:\src\ZooSimulator\ZooSimulator\bin\Debug\netcoreapp2.0\ZooSimulator.deps.json
+C:\src\ZooSimulator\ZooSimulator\bin\Debug\netcoreapp2.0\ZooSimulator.runtimeconfig.json
+C:\src\ZooSimulator\ZooSimulator\bin\Debug\netcoreapp2.0\ZooSimulator.runtimeconfig.dev.json
+C:\src\ZooSimulator\ZooSimulator\bin\Debug\netcoreapp2.0\ZooSimulator.dll
+C:\src\ZooSimulator\ZooSimulator\bin\Debug\netcoreapp2.0\ZooSimulator.pdb
+C:\src\ZooSimulator\ZooSimulator\obj\Debug\netcoreapp2.0\ZooSimulator.csprojResolveAssemblyReference.cache
+C:\src\ZooSimulator\ZooSimulator\obj\Debug\netcoreapp2.0\ZooSimulator.csproj.CoreCompileInputs.cache
+C:\src\ZooSimulator\ZooSimulator\obj\Debug\netcoreapp2.0\ZooSimulator.AssemblyInfoInputs.cache
+C:\src\ZooSimulator\ZooSimulator\obj\Debug\netcoreapp2.0\ZooSimulator.AssemblyInfo.cs
+C:\src\ZooSimulator\ZooSimulator\obj\Debug\netcoreapp2.0\ZooSimulator.dll
+C:\src\ZooSimulator\ZooSimulator\obj\Debug\netcoreapp2.0\ZooSimulator.pdb
